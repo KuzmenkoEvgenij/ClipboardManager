@@ -38,7 +38,9 @@ public class ClipboardManagerPlugin implements MethodCallHandler {
       }
       ClipboardManager clipboard = (ClipboardManager)context.getSystemService(Context.CLIPBOARD_SERVICE);
       ClipData clip = ClipData.newPlainText("", thingToCopy);
-      clipboard.setPrimaryClip(clip);
+      if (clipboard != null) {
+        clipboard.setPrimaryClip(clip);
+      }
       result.success(true);
     } else {
       result.notImplemented();
